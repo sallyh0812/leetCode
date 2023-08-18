@@ -10,7 +10,7 @@ M             1000*/
 #include <string.h>
 
 int romanToInt(char* s){
-    int integer[15]={0};
+    int integer[16]={0};
     int ans=0;
     for (int i=0; i<strlen(s); i++){
         if (s[i]=='I') integer[i]=1;
