@@ -9,28 +9,49 @@ M             1000*/
 #include <stdio.h>
 #include <string.h>
 
+//transfer roman to integer one by one
+int decimalTransfer(char a){
+    switch (a){
+    case 'I':
+        return 1;
+        break;
+    case 'V':
+        return 5;
+        break;
+    case 'X':
+        return 10;
+        break;
+    case 'L':
+        return 50;
+        break;
+    case 'C':
+        return 100;
+        break;
+    case 'D':
+        return 500;
+        break;
+    case 'M':
+        return 1000;
+        break;
+    default:
+        break;
+    }
+}
+
+//determine which decimal should be minus
 int romanToInt(char* s){
-    int integer[16]={0};
     int ans=0;
     for (int i=0; i<strlen(s); i++){
-        if (s[i]=='I') integer[i]=1;
-        else if (s[i]=='V') integer[i]=5;
-        else if (s[i]=='X') integer[i]=10;
-        else if (s[i]=='L') integer[i]=50;
-        else if (s[i]=='C') integer[i]=100;
-        else if (s[i]=='D') integer[i]=500;
-        else if (s[i]=='M') integer[i]=1000;
-    }
-    for (int i=0; i<strlen(s); i++){
-        if (integer[i]<integer[i+1]){
-            ans-=integer[i];
+        if (decimalTransfer(s[i])<decimalTransfer(s[i+1])){
+            ans-=decimalTransfer(s[i]);
         }
-        else ans+=integer[i];
+        else ans+=decimalTransfer(s[i]);
     }
     return ans;
 }
+
 int main(){
-    char romanNum[15];
+    char romanNum[16];
     scanf("%s", romanNum);
     printf("%d",romanToInt(romanNum));
 }
