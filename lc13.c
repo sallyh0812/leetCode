@@ -10,42 +10,25 @@ M             1000*/
 #include <string.h>
 
 //transfer roman to integer one by one
-int decimalTransfer(char a){
-    switch (a){
-    case 'I':
-        return 1;
-        break;
-    case 'V':
-        return 5;
-        break;
-    case 'X':
-        return 10;
-        break;
-    case 'L':
-        return 50;
-        break;
-    case 'C':
-        return 100;
-        break;
-    case 'D':
-        return 500;
-        break;
-    case 'M':
-        return 1000;
-        break;
-    default:
-        break;
-    }
+int decimalTransfer(char *a){
+    if (*a=='I') return 1;
+    else if (*a=='V') return 5;
+    else if (*a=='X') return 10;
+    else if (*a=='L') return 50;
+    else if (*a=='C') return 100;
+    else if (*a=='D') return 500;
+    else if (*a=='M') return 1000;
+    else return -1; //avoid reach end of non-void function
 }
 
 //determine which decimal should be minus
 int romanToInt(char* s){
     int ans=0;
     for (int i=0; i<strlen(s); i++){
-        if (decimalTransfer(s[i])<decimalTransfer(s[i+1])){
-            ans-=decimalTransfer(s[i]);
+        if (decimalTransfer(&s[i])<decimalTransfer(&s[i+1])){
+            ans-=decimalTransfer(&s[i]);
         }
-        else ans+=decimalTransfer(s[i]);
+        else ans+=decimalTransfer(&s[i]);
     }
     return ans;
 }
