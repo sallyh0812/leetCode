@@ -10,42 +10,27 @@ M             1000*/
 #include <string.h>
 
 int romanToInt(char* s){
-    if (*s=='I'){
-        return 1;
-    }
-    else if (*s=='V'){
-        return 5;
-    }
-    else if (*s=='X'){
-        return 10;
-    }
-    else if (*s=='L'){
-        return 50;
-    }
-    else if (*s=='C'){
-        return 100;
-    }
-    else if (*s=='D'){
-        return 500;
-    }
-    else if (*s=='M'){
-        return 1000;
-    }
-}
-
-int main(){
-    char romanNum[15];
-    scanf("%s", romanNum);
     int integer[15]={0};
     int ans=0;
-    for (int i=0; i<strlen(romanNum); i++){
-        integer[i]=romanToInt(&romanNum[i]);     
+    for (int i=0; i<strlen(s); i++){
+        if (s[i]=='I') integer[i]=1;
+        else if (s[i]=='V') integer[i]=5;
+        else if (s[i]=='X') integer[i]=10;
+        else if (s[i]=='L') integer[i]=50;
+        else if (s[i]=='C') integer[i]=100;
+        else if (s[i]=='D') integer[i]=500;
+        else if (s[i]=='M') integer[i]=1000;
     }
-    for (int i=0; i<strlen(romanNum); i++){
+    for (int i=0; i<strlen(s); i++){
         if (integer[i]<integer[i+1]){
             ans-=integer[i];
         }
         else ans+=integer[i];
     }
-    printf("%d", ans);
+    return ans;
+}
+int main(){
+    char romanNum[15];
+    scanf("%s", romanNum);
+    printf("%d",romanToInt(romanNum));
 }
