@@ -34,7 +34,8 @@ int romanToInt(char* s){
 }
 
 int main(){
-    char romanNum[15]="MCMXCIV";
+    char romanNum[15];
+    scanf("%s", romanNum);
     int integer[15]={0};
     int ans=0;
     for (int i=0; i<strlen(romanNum); i++){
